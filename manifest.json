@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Litcode Premium Extension",
+  "version": "1.1.0",
+  "description": "Explore company questions on the LeetCode problemset and see company data on problem pages.",
+  "permissions": ["storage"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*", "https://www.leetcode.com/problems/*", "https://leetcode.com/problemset", "https://leetcode.com/problemset/*", "https://www.leetcode.com/problemset", "https://www.leetcode.com/problemset/*"],
+      "js": ["content.js", "problemset.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["content.css", "problemset.css"],
+      "matches": ["https://leetcode.com/*", "https://www.leetcode.com/*"]
+    }
+  ]
+}
